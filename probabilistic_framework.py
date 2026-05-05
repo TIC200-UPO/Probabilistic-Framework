@@ -1,6 +1,4 @@
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
-from ucimlrepo import fetch_ucirepo
 
 def _groundTruthMatrix(y_true, labels):
     """
