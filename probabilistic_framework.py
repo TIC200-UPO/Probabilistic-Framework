@@ -283,33 +283,3 @@ def certainty_accuracy(y_true, y_prob, labels=None):
     U_acc = np.sum(np.diag(U))/np.sum(U)
 
     return V_acc, U_acc
-
-if __name__ == "__main__":
-    # Loads the dataset
-    iris  = fetch_ucirepo(id=53) 
-    X, y = iris.data.features, iris.data.targets.squeeze()
-
-    classes = np.unique(y)
-    print(classes)
-
-    # Training and predict
-    model = GaussianNB().fit(X, y)
-    result = model.predict_proba(X)
-    
-    # Calculates the probabilistic confusion matrix and the probabilistic accuracy
-    prob_conf_matrix = prob_confusion_matrix(y, result)
-    prob_acc = prob_accuracy(y, result)
-
-    print(np.round(prob_conf_matrix,3))
-    print(f"Acc*:{np.round(prob_acc,5)}\n")
-
-
-    # Calculates the certainty and uncertainty confusion matrix, their probabilistic accuracy and their lambda values
-    V, U = certainty_matrix(y, result)
-    V_acc, U_acc = certainty_accuracy(y, result)
-    lambda_V, lambda_U = certainty_weights(y, result)
-
-    print(np.round(V,3))
-    print(f"Acc_V*:{np.round(V_acc,5)}, lambda_V:{np.round(lambda_V,5)}\n")
-    print(np.round(U,3))
-    print(f"Acc_U*:{np.round(U_acc,5)}, lambda_U:{np.round(lambda_U,5)}")
