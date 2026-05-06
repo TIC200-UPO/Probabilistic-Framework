@@ -31,7 +31,6 @@ print(f"Acc*:{np.round(prob_acc,5)}\n")
 
 # Calculates the certainty and uncertainty confusion matrix, their probabilistic accuracy and their lambda values
 V, U = certainty_matrix(y, result)
-V_acc, U_acc = certainty_accuracy(y, result)
 lambda_V, lambda_U = certainty_weights(y, result)
 
 print(np.round(V,3))
@@ -59,7 +58,7 @@ Acc*:0.94754
 |       0      |       45.374     |       2.314    |
 |       0      |        2.644     |      45.715    |
 
-Acc_V*:0.96605, lambda_V:0.97365
+lambda_V:0.97365
 
 ### Uncertainty matrix (U)
 
@@ -69,7 +68,7 @@ Acc_V*:0.96605, lambda_V:0.97365
 |      0       |        0.686     |       1.626    |
 |      0       |        1.285     |       0.356    |
 
-Acc_U*:0.26353, lambda_U:0.02635
+lambda_U:0.02635
 
 ## Citation
 
