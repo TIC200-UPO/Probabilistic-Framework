@@ -84,6 +84,8 @@ def prob_confusion_matrix(y_true, y_prob, labels=None, abs_tolerance=1e-8):
     else:
         if len(labels) == 0:
             raise ValueError("'labels' should contain at least one label.")
+        elif not set(y_true).issubset(set(labels)):
+            raise ValueError("All of the labels in 'y_true' must be in 'labels'.")
         elif len(np.intersect1d(y_true, labels)) == 0:
             raise ValueError("At least one label specified must be in 'y_true'.")
         
@@ -149,6 +151,8 @@ def certainty_matrix(y_true, y_prob, labels=None, abs_tolerance=1e-8):
     else:
         if len(labels) == 0:
             raise ValueError("'labels' should contain at least one label.")
+        elif not set(y_true).issubset(set(labels)):
+            raise ValueError("All of the labels in 'y_true' must be in 'labels'.")
         elif len(np.intersect1d(y_true, labels)) == 0:
             raise ValueError("At least one label specified must be in 'y_true'.")
         
@@ -299,6 +303,8 @@ def prob_balanced_accuracy_score(y_true, y_prob, labels=None):
     else:
         if len(labels) == 0:
             raise ValueError("'labels' should contain at least one label.")
+        elif not set(y_true).issubset(set(labels)):
+            raise ValueError("All of the labels in 'y_true' must be in 'labels'.")
         elif len(np.intersect1d(y_true, labels)) == 0:
             raise ValueError("At least one label specified must be in 'y_true'.")
         
